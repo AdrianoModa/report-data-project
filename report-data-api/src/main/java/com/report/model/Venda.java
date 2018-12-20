@@ -20,7 +20,7 @@ public class Venda implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+	private String nomeLoja;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Calendar data;
 	private Float valor;
@@ -32,9 +32,10 @@ public class Venda implements Serializable {
 		super();
 	}
 
-	public Venda(Long id, Calendar data, Float valor, int dia, int mes, int ano) {
+	public Venda(Long id, String nomeLoja, Calendar data, Float valor, int dia, int mes, int ano) {
 		super();
 		this.id = id;
+		this.nomeLoja = nomeLoja;
 		this.data = data;
 		this.valor = valor;
 		this.dia = dia;
@@ -48,6 +49,14 @@ public class Venda implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getNomeLoja() {
+		return nomeLoja;
+	}
+
+	public void setNomeLoja(String nomeLoja) {
+		this.nomeLoja = nomeLoja;
 	}
 
 	public Calendar getData() {
@@ -117,7 +126,7 @@ public class Venda implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Venda [id=" + id + ", data=" + data + ", valor=" + valor + ", dia=" + dia + ", mes=" + mes + ", ano="
-				+ ano + "]";
+		return "Venda [id=" + id + ", nomeLoja=" + nomeLoja + ", data=" + data + ", valor=" + valor + ", dia=" + dia
+				+ ", mes=" + mes + ", ano=" + ano + "]";
 	}
 }
