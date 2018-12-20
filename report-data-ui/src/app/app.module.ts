@@ -7,17 +7,23 @@ import { TableListReportComponent } from './table-list-report/table-list-report.
 
 import {TableModule} from 'primeng/table';
 
+import { VendaService } from './shared/service/venda.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormTableListComponent } from './table-list-report/form-table-list/form-table-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    TableListReportComponent
+    TableListReportComponent,
+    FormTableListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     TableModule
   ],
-  providers: [],
+  providers: [VendaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

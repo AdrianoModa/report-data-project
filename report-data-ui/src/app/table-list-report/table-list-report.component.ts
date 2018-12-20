@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Venda } from './../shared/entity/venda';
+import { VendaService } from './../shared/service/venda.service';
 
 @Component({
   selector: 'app-table-list-report',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableListReportComponent implements OnInit {
 
-  constructor() { }
+  vendas: Venda[] = []
+
+  constructor(private vendaService: VendaService) { }
 
   ngOnInit() {
+    this.listarVendas()
+  }
+
+  listarVendas(){
+    this.vendaService.getVendas()
+      .subscribe(venda => this.vendas = venda)
   }
 
 }
