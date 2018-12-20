@@ -1,0 +1,10 @@
+INSERT INTO `venda` (`id`,`ano`,`data`,`dia`,`mes`,`valor`) VALUES (1,2018,'2018-12-17 21:00:00',18,11,174);
+INSERT INTO `venda` (`id`,`ano`,`data`,`dia`,`mes`,`valor`) VALUES (2,2018,'2018-12-18 21:00:00',19,11,188);
+INSERT INTO `venda` (`id`,`ano`,`data`,`dia`,`mes`,`valor`) VALUES (3,2018,'2018-12-19 21:00:00',20,11,202);
+INSERT INTO `venda` (`id`,`ano`,`data`,`dia`,`mes`,`valor`) VALUES (4,2018,'2018-12-20 21:00:00',21,11,178);
+INSERT INTO `venda` (`id`,`ano`,`data`,`dia`,`mes`,`valor`) VALUES (5,2018,'2018-12-21 21:00:00',22,12,209);
+INSERT INTO `venda` (`id`,`ano`,`data`,`dia`,`mes`,`valor`) VALUES (6,2018,'2018-11-17 21:00:00',18,10,132);
+INSERT INTO `venda` (`id`,`ano`,`data`,`dia`,`mes`,`valor`) VALUES (7,2018,'2018-11-18 21:00:00',19,10,198);
+INSERT INTO `venda` (`id`,`ano`,`data`,`dia`,`mes`,`valor`) VALUES (8,2018,'2018-11-19 21:00:00',20,10,212);
+INSERT INTO `venda` (`id`,`ano`,`data`,`dia`,`mes`,`valor`) VALUES (9,2018,'2018-11-20 21:00:00',21,10,178);
+INSERT INTO `venda` (`id`,`ano`,`data`,`dia`,`mes`,`valor`) VALUES (10,2018,'2018-11-21 21:00:00',22,10,210);
