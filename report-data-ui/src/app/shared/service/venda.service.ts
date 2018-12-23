@@ -21,7 +21,7 @@ export class VendaService {
   }
 
   postVenda(venda: Venda): Observable<any> {
-    return this.http.post(`this.urlVenda`, venda)
+    return this.http.post(`${this.urlVenda}`, venda)
   }
 
 }

@@ -5,17 +5,17 @@
         Listagem de vendas
       </ng-template>
   
-      <ng-template pTemplate="header">
+      <ng-template pTemplate="header" style="text-align: center">
           <tr>
-            <th>Id</th>
+            <th>Loja</th>
             <th>Data</th>
             <th>Valor</th>
             <th>Ano</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-venda>
-        <tr>
-          <td>{{venda.id}}</td>
+        <tr style="text-align: center">
+          <td>{{venda.nomeLoja}}</td>
           <td>{{venda.data}}</td>
           <td>{{venda.valor}}</td>
           <td>{{venda.ano}}</td>
