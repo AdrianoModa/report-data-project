@@ -39,6 +39,9 @@ public class VendaService {
 	}
 	
 	public Venda adicionar(Venda venda) {
+		venda.setAno(venda.getData().get(Calendar.YEAR));
+		venda.setMes(venda.getData().get(Calendar.MONTH));
+		venda.setDia(venda.getData().get(Calendar.DAY_OF_MONTH));
 		return vendaRepository.save(venda);
 	}
 	
