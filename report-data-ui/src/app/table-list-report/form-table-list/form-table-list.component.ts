@@ -21,21 +21,22 @@ export class FormTableListComponent implements OnInit {
   }
 
   filterCountrySingle(event) {
-    let query = event.query;
+    let query = event.query
     this.vendaService.getVendas().subscribe(countries => {
-        this.filteredCountriesSingle = this.filterCountry(query, countries);
-    });
+        this.filteredCountriesSingle = this.filterCountry(query, countries)
+    })
   }
 
-  filterCountry(query, countries: any[]):any[] {
+  filterCountry(query, countries: any[]):string[] {
     let filtered : any[] = [];
     for(let i = 0; i < countries.length; i++) {
         let country = countries[i];
         if(country.nomeLoja.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-            filtered.push(country);
+            filtered.push(country)
         }
     }
-    return filtered;
+    console.log(typeof(filtered))
+    return filtered
 }
 
   adicionar(form: FormControl){

@@ -13,6 +13,7 @@ import {InputMaskModule} from 'primeng/inputmask';
 import {ToastModule} from 'primeng/toast';
 import {ButtonModule} from 'primeng/button';
 import {AutoCompleteModule} from 'primeng/autocomplete';
+import {DropdownModule} from 'primeng/dropdown';
 
 import { VendaService } from './shared/service/venda.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -35,7 +36,8 @@ import { FormTableListComponent } from './table-list-report/form-table-list/form
     InputMaskModule,
     ToastModule,
     ButtonModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    DropdownModule
   ],
   providers: [VendaService],
   bootstrap: [AppComponent]

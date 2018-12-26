@@ -1,7 +1,7 @@
 package com.report.model;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +22,7 @@ public class Venda implements Serializable {
 	private Long id;
 	private String nomeLoja;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-	private Calendar data;
+	private LocalDate data;
 	private Float valor;
 	private int dia;
 	private int mes;
@@ -32,7 +32,7 @@ public class Venda implements Serializable {
 		super();
 	}
 
-	public Venda(Long id, String nomeLoja, Calendar data, Float valor, int dia, int mes, int ano) {
+	public Venda(Long id, String nomeLoja, LocalDate data, Float valor, int dia, int mes, int ano) {
 		super();
 		this.id = id;
 		this.nomeLoja = nomeLoja;
@@ -59,11 +59,11 @@ public class Venda implements Serializable {
 		this.nomeLoja = nomeLoja;
 	}
 
-	public Calendar getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Calendar data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 

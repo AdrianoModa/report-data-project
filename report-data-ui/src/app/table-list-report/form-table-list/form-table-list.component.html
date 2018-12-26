@@ -1,33 +1,25 @@
 <div class="content">
   <h2>Inserir Dados Relatório</h2>
   <form #f="ngForm" (ngSubmit)="adicionar(f)">
-    <!-- <div class="ui-g ui-fluid">
-      <div class="ui-g-12 ui-md-4">
-        <div class="ui-inputgroup">
-          <span class="ui-inputgroup-addon"><i class="pi pi-key"></i></span>
-          <input type="number" min="0" pInputText name="id" [(ngModel)]="vendas.id" placeholder="ID">         
-        </div>
-      </div>
-    </div>   -->
 
-    <!-- <div class="ui-g ui-fluid">
+    <div class="ui-g ui-fluid">
       <div class="ui-g-12 ui-md-4">
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="pi pi-shopping-cart" aria-hidden="true"></i></span>
           <input type="text" pInputText name="nomeLoja" [(ngModel)]="vendas.nomeLoja" placeholder="Nome da Loja">      
         </div>
       </div>
-    </div>   -->
+    </div>  
 
-    <p-autoComplete name="nomeLoja" [(ngModel)]="venda" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="nomeLoja" [size]="30"
+    <!-- <p-autoComplete name="nomeLoja" [(ngModel)]="vendas.nomeLoja" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="nomeLoja" [size]="30"
     placeholder="Lojas" [minLength]="1"></p-autoComplete>
-    <span style="margin-left:10px">Lojas: {{venda ? venda.nomeLoja || venda : 'nenhuma loja'}}</span>
+    <span style="margin-left:10px">Lojas: {{venda ? venda.nomeLoja || venda : 'nenhuma loja'}}</span> -->
 
     <div class="ui-g ui-fluid">
       <div class="ui-g-12 ui-md-4">
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="pi pi-calendar" aria-hidden="true"></i></span>
-          <p-inputMask mask="99-99-9999" name="data" [(ngModel)]="vendas.data" placeholder="99-99-9999" slotChar="mm/dd/yyyy"></p-inputMask>          
+          <input name="data" [(ngModel)]="vendas.data" placeholder="Ex: 08-03-2009"/>          
         </div>
       </div>
     </div>

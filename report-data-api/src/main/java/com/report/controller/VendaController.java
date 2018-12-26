@@ -1,6 +1,6 @@
 package com.report.controller;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -36,7 +36,7 @@ public class VendaController {
 	}
 	
 	@GetMapping("/data/{data}")
-	public ResponseEntity<?> listarPorData(@PathVariable Calendar data){
+	public ResponseEntity<?> listarPorData(@PathVariable LocalDate data){
 		List<Venda> venda = vendaService.listarPorData(data);
 		return ResponseEntity.ok().body(venda);
 	}
@@ -67,7 +67,7 @@ public class VendaController {
 	
 	@PostMapping
 	public ResponseEntity<Venda> adicionar(@Valid @RequestBody Venda venda){
-		venda = vendaService.adicionar(venda);
+		vendaService.adicionar(venda);
 		return new ResponseEntity<Venda>(venda, HttpStatus.CREATED);
 	}
 	

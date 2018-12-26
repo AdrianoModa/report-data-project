@@ -1,6 +1,6 @@
 package com.report.repository;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,7 +12,7 @@ import com.report.model.Venda;
 @Repository
 public interface VendaRepository extends JpaRepository<Venda, Long> {
 	
-	List<Venda> findByData(Calendar data);
+	List<Venda> findByData(LocalDate data);
 	
 	@Query("FROM Venda v WHERE v.dia = ?1")
 	List<Venda> findByDay(int dia);

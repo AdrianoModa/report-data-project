@@ -1,6 +1,6 @@
 package com.report.service;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +22,7 @@ public class VendaService {
 		return vendaRepository.findAll();
 	}
 	
-	public List<Venda> listarPorData(Calendar data){
+	public List<Venda> listarPorData(LocalDate data){
 		return vendaRepository.findByData(data);
 	}
 	
@@ -39,9 +39,9 @@ public class VendaService {
 	}
 	
 	public Venda adicionar(Venda venda) {
-		venda.setAno(venda.getData().get(Calendar.YEAR));
-		venda.setMes(venda.getData().get(Calendar.MONTH));
-		venda.setDia(venda.getData().get(Calendar.DAY_OF_MONTH));
+		venda.setDia(venda.getData().getDayOfMonth());
+		venda.setMes(venda.getData().getMonthValue());
+		venda.setAno(venda.getData().getYear());
 		return vendaRepository.save(venda);
 	}
 	

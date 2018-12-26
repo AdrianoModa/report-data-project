@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Venda } from './../shared/entity/venda';
 import { VendaService } from './../shared/service/venda.service';
+import { validateConfig } from '@angular/router/src/config';
 
 @Component({
   selector: 'app-table-list-report',
@@ -10,24 +11,67 @@ import { VendaService } from './../shared/service/venda.service';
 export class TableListReportComponent implements OnInit {
 
   vendas: Venda[] = []
-  valorNovembro: number[];
+  valorData: number
+  mouth: Venda
+  meses = 
+  [
+    {
+      nome: 'Janeiro',
+      value: '01'
+    },
+    {
+      nome: 'Fevereiro',
+      value: '02'
+    },
+    {
+      nome: 'Março',
+      value: '03'
+    },
+    {    
+      nome: 'Abril',
+      value: '04'
+    },
+    {
+      nome: 'Maio',
+      value: '05'
+    },
+    {
+      nome: 'Junho',
+      value: '06'
+    },
+    {
+      nome: 'Julho',
+      value: '07'
+    },
+    {
+      nome: 'Agosto',
+      value: '08'
+    },
+    {    
+      nome: 'Setembro',
+      value: '09'
+    },
+    {
+      nome: 'Outubro',
+      value: '10'
+    
+    },
+    {
+      nome: 'Novembro',
+      value: '11'
+    },
+    {    
+      nome: 'Dezembro',
+      value: '12'
+    }
+  ] 
 
   constructor(private vendaService: VendaService) { }
 
   ngOnInit() {
     this.listarVendas()
-    // this.listarVendasPorMes(10)
-    this.listarNovembro(10)
   }
 
-  listarNovembro(mes: number){
-    this.vendaService.getVendas()
-      .subscribe(venda => {
-        let valor = this.vendas.map(res => res.dia)
-        this.valorNovembro = valor
-        console.log(this.valorNovembro)
-      })
-  }
 
   listarVendas(){
     this.vendaService.getVendas()
