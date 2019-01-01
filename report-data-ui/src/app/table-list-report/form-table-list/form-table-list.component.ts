@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Venda } from 'src/app/shared/entity/venda';
 import { VendaService } from './../../shared/service/venda.service';
 import { FormControl } from '@angular/forms';
@@ -10,14 +10,26 @@ import { FormControl } from '@angular/forms';
 })
 export class FormTableListComponent implements OnInit {
 
-  venda: any
+  venda: Venda
   vendas: Venda[] = []
-
   filteredCountriesSingle: any[]
+  @Output() vendaSalva = new EventEmitter()
+  lojas: Array<any> = [ 'PTOMAD', 'MATRIZ']
+    
+    // { nome: "JULIOLIM"},{ nome: "OLPAIVA"},{ nome: "OSOPAIVA"},{ nome: "VVELHA,"},{ nome: "VTAVORA"},
+    // { nome: "JWALTER"},{ nome: "CBRANCO"},{ nome: "JPENHA"},{ nome: "JQMFELIC"},{ nome: "JOSELEON"},{ nome: "ASALES"},{ nome: "TREZMAIO"},
+    // { nome: "SERRINHA"},{ nome: "MARACANAU"},{ nome: "FRCIRILO"},{ nome: "WALDIOGO"},{ nome: "JOCARLOS"},{ nome: "MDOURADO"},{ nome: "HJORGE"},
+    // { nome: "SIQUEIRA"}    
 
   constructor(private vendaService: VendaService) { }
 
-  ngOnInit() {       
+  ngOnInit() {
+    this.listarVendas()   
+  }
+
+  listarVendas(){
+    this.vendaService.getVendas()
+      .subscribe(venda => this.vendas = venda)
   }
 
   filterCountrySingle(event) {
@@ -30,20 +42,20 @@ export class FormTableListComponent implements OnInit {
   filterCountry(query, countries: any[]):string[] {
     let filtered : any[] = [];
     for(let i = 0; i < countries.length; i++) {
-        let country = countries[i];
-        if(country.nomeLoja.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-            filtered.push(country)
-        }
+      let country = countries[i];
+      if(country.nomeLoja.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+        filtered.push(country)
+      }
     }
-    console.log(typeof(filtered))
-    return filtered
+  return filtered
 }
 
-  adicionar(form: FormControl){
+  adicionar(form: FormControl) {
     return this.vendaService.postVenda(form.value)
       .subscribe(venda => {
         this.vendas = venda
         form.reset()
+        this.vendaSalva.emit(venda)
       })
   }
 

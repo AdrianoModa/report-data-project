@@ -14,16 +14,22 @@ import {ToastModule} from 'primeng/toast';
 import {ButtonModule} from 'primeng/button';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {DropdownModule} from 'primeng/dropdown';
+import {CalendarModule} from 'primeng/calendar';
+import {PanelModule} from 'primeng/panel';
+
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { VendaService } from './shared/service/venda.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormTableListComponent } from './table-list-report/form-table-list/form-table-list.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableListReportComponent,
-    FormTableListComponent
+    FormTableListComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,10 @@ import { FormTableListComponent } from './table-list-report/form-table-list/form
     ToastModule,
     ButtonModule,
     AutoCompleteModule,
-    DropdownModule
+    DropdownModule,
+    CalendarModule,
+    PanelModule,
+    CurrencyMaskModule
   ],
   providers: [VendaService],
   bootstrap: [AppComponent]

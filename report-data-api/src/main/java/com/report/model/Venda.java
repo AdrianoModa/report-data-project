@@ -23,7 +23,8 @@ public class Venda implements Serializable {
 	private String nomeLoja;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate data;
-	private Float valor;
+	private Double valor;
+	private Double valorAnterior;
 	private int dia;
 	private int mes;
 	private int ano;
@@ -32,12 +33,13 @@ public class Venda implements Serializable {
 		super();
 	}
 
-	public Venda(Long id, String nomeLoja, LocalDate data, Float valor, int dia, int mes, int ano) {
+	public Venda(Long id, String nomeLoja, LocalDate data, Double valor, Double valorAnterior, int dia, int mes, int ano) {
 		super();
 		this.id = id;
 		this.nomeLoja = nomeLoja;
 		this.data = data;
 		this.valor = valor;
+		this.valorAnterior = valorAnterior;
 		this.dia = dia;
 		this.mes = mes;
 		this.ano = ano;
@@ -67,12 +69,20 @@ public class Venda implements Serializable {
 		this.data = data;
 	}
 
-	public Float getValor() {
+	public Double getValor() {
 		return valor;
 	}
 
-	public void setValor(Float valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+
+	public Double getValorAnterior() {
+		return valorAnterior;
+	}
+
+	public void setValorAnterior(Double valorAnterior) {
+		this.valorAnterior = valorAnterior;
 	}
 
 	public int getDia() {
@@ -126,7 +136,7 @@ public class Venda implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Venda [id=" + id + ", nomeLoja=" + nomeLoja + ", data=" + data + ", valor=" + valor + ", dia=" + dia
-				+ ", mes=" + mes + ", ano=" + ano + "]";
+		return "Venda [id=" + id + ", nomeLoja=" + nomeLoja + ", data=" + data + ", valor=" + valor + ", valorAnterior="
+				+ valorAnterior + ", dia=" + dia + ", mes=" + mes + ", ano=" + ano + "]";
 	}
 }

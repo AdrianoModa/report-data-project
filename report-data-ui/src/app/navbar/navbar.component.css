@@ -1,0 +1,11 @@
+.navbar-nav {
+    color: white;
+    font-size: 15px;
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+    padding: 5px;
+    margin: 8px;
+    border-radius: 2px solid white;
+    background-image: linear-gradient(to left,#2bc0ec,#1b81d7);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
+}
+

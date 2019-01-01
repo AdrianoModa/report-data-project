@@ -1,44 +1,40 @@
-<div class="content">
-  <h2>Inserir Dados Relatório</h2>
-  <form #f="ngForm" (ngSubmit)="adicionar(f)">
+<form #f="ngForm" (ngSubmit)="adicionar(f)">
 
-    <div class="ui-g ui-fluid">
-      <div class="ui-g-12 ui-md-4">
+<div class="ui-g-12">
+  <p-panel header="Cadastro Dados Relatório">
+    <div class="ui-g">
+
+      <div class="ui-g-4 ui-sm-12 ui-fluid">
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="pi pi-shopping-cart" aria-hidden="true"></i></span>
-          <input type="text" pInputText name="nomeLoja" [(ngModel)]="vendas.nomeLoja" placeholder="Nome da Loja">      
+          <input pInputText name="nomeLoja" [(ngModel)]="vendas.nomeLoja" placeholder="Nome da Loja">      
         </div>
       </div>
-    </div>  
 
-    <!-- <p-autoComplete name="nomeLoja" [(ngModel)]="vendas.nomeLoja" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="nomeLoja" [size]="30"
-    placeholder="Lojas" [minLength]="1"></p-autoComplete>
-    <span style="margin-left:10px">Lojas: {{venda ? venda.nomeLoja || venda : 'nenhuma loja'}}</span> -->
-
-    <div class="ui-g ui-fluid">
-      <div class="ui-g-12 ui-md-4">
+      <div class="ui-g-4 ui-sm-12 ui-fluid">
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="pi pi-calendar" aria-hidden="true"></i></span>
-          <input name="data" [(ngModel)]="vendas.data" placeholder="Ex: 08-03-2009"/>          
+          <input pInputText type="datetime" #t name="data" [(ngModel)]="vendas.data" placeholder="Ex: 08-03-2009"/>                
         </div>
-      </div>
-    </div>
-
-    <div class="ui-g ui-fluid">
-      <div class="ui-g-12 ui-md-4">
+      </div>      
+  
+      <div class="ui-g-4 ui-sm-12 ui-fluid">
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="pi pi-dollar" aria-hidden="true"></i></span>
-          <input type="text" pInputText name="valor" [(ngModel)]="vendas.valor" placeholder="Valor">     
-          <span class="ui-inputgroup-addon">.00</span>     
+          <input pInputText name="valor" [(ngModel)]="vendas.valor" placeholder="Valor" 
+          currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }">     
+          <span class="ui-inputgroup-addon">,00</span>     
         </div>
       </div>
-    </div>
     
-    <!-- <p-toast position="top-center"></p-toast> -->
-
-    <p-button styleClass="ui-button-success" label="Salvar" type="submit"></p-button>
-    <!-- <p-button styleClass="ui-button-success" label="Atualizar" type="submit"></p-button> -->
-
-  </form>
+    </div> 
+    <p-footer>
+      <p-button type="submit" icon="pi pi-check" iconPos="right" label="Salvar"></p-button>
+    </p-footer>     
+    </p-panel>
 </div>
+
+<!-- <p-toast position="top-center"></p-toast> -->
+
+</form>
 

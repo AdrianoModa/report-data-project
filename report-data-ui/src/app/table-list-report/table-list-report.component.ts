@@ -10,6 +10,7 @@ import { validateConfig } from '@angular/router/src/config';
 })
 export class TableListReportComponent implements OnInit {
 
+  mesInput: string[]
   vendas: Venda[] = []
   valorData: number
   mouth: Venda
@@ -64,14 +65,13 @@ export class TableListReportComponent implements OnInit {
       nome: 'Dezembro',
       value: '12'
     }
-  ] 
+  ]
 
   constructor(private vendaService: VendaService) { }
 
   ngOnInit() {
     this.listarVendas()
   }
-
 
   listarVendas(){
     this.vendaService.getVendas()
@@ -81,6 +81,14 @@ export class TableListReportComponent implements OnInit {
   listarVendasPorMes(mes: number){
     this.vendaService.getVendasPorMes(mes)
       .subscribe(venda => this.vendas = venda)
+  }
+
+  listaMesAnterior(mes: number){
+    this.vendaService.getVendasPorMes(mes)
+      .subscribe(() => {
+        let mesPassado = this.vendas.map(res => res.data)
+        this.mesInput = mesPassado
+      })
   }
 
 }
