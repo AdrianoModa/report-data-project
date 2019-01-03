@@ -30,7 +30,7 @@ public class VendaService {
 	}
 
 	public List<Venda> listarPorMes(int mes){
-		return vendaRepository.findByMouth(mes);
+		return vendaRepository.findByMonth(mes);
 	}
 
 	public List<Venda> listarPorAno(int ano){

@@ -18,7 +18,7 @@ public interface VendaRepository extends JpaRepository<Venda, Long> {
 	List<Venda> findByDay(int dia);
 	
 	@Query("FROM Venda v WHERE v.mes = ?1")
-	List<Venda> findByMouth(int mes);
+	List<Venda> findByMonth(int mes);
 	
 	@Query("FROM Venda v WHERE v.ano = ?1")
 	List<Venda> findByYear(int ano);

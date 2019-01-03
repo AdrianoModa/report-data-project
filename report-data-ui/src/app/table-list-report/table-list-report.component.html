@@ -9,7 +9,7 @@
   </div>
 
   <div class="ui-g-12">
-    <p-table [value]="vendas" responsive="true">
+    <p-table [value]="vendas">
       <ng-template pTemplate="caption">
         Listagem de vendas
       </ng-template>
@@ -19,7 +19,6 @@
             <th>Loja</th>
             <th>Data</th>
             <th>Valor</th>
-            <th>Diferenca Mes Anterior</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-venda>
@@ -27,7 +26,6 @@
           <td>{{ venda.nomeLoja}}</td>
           <td>{{ venda.data }}</td>
           <td>R$ {{ venda.valor | number: '2.1-2' }}</td>
-          <td>R$ vazio </td>
         </tr>
       </ng-template>
     </p-table>
