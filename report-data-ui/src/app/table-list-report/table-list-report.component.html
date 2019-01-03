@@ -3,8 +3,7 @@
     <p-panel header="Filtro por Datas">
       <p-dropdown [options]="meses" [(ngModel)]="mouth" 
       (onChange)="listarVendasPorMes(mouth.value)" placeholder="Selecione um Mês" optionLabel="nome" [showClear]="true">
-      </p-dropdown>  
-      <p>{{mouth ? mouth.value : 'nenhum mes selecionado'}}</p>       
+      </p-dropdown>      
     </p-panel>
   </div>
 

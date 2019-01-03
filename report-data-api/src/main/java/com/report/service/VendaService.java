@@ -36,12 +36,8 @@ public class VendaService {
 	public List<Venda> listarPorAno(int ano){
 		return vendaRepository.findByYear(ano);
 	}
-
+	
 	public Venda adicionar(Venda venda) {
-		venda.setValorAnterior(venda.getValor());
-		vendaRepository.findAll().forEach(i -> {			
-			venda.setValor(i.getValor() + venda.getValorAnterior());
-		});
 		venda.setDia(venda.getData().getDayOfMonth());
 		venda.setMes(venda.getData().getMonthValue());
 		venda.setAno(venda.getData().getYear());
@@ -59,7 +55,8 @@ public class VendaService {
 
 	public void remover(Long id) {
 		Venda vendaExistente = vendaRepository.findOne(id);
-		Optional.ofNullable(vendaExistente).orElseThrow(() -> new EntityExistsException("Objeto nao encontrado"));
+		Optional.ofNullable(vendaExistente)
+		.orElseThrow(() -> new EntityExistsException("Objeto não encontrado"));
 		vendaRepository.delete(vendaExistente);
 	}
 

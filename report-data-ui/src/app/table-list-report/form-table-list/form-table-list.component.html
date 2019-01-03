@@ -7,14 +7,14 @@
       <div class="ui-g-4 ui-sm-12 ui-fluid">
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="pi pi-shopping-cart" aria-hidden="true"></i></span>
-          <input pInputText name="nomeLoja" [(ngModel)]="vendas.nomeLoja" placeholder="Nome da Loja">      
+          <input pInputText name="nomeLoja" [(ngModel)]="vendas.nomeLoja" placeholder="Nome da Loja" required>      
         </div>
       </div>
 
       <div class="ui-g-4 ui-sm-12 ui-fluid">
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="pi pi-calendar" aria-hidden="true"></i></span>
-          <input pInputText type="datetime" #t name="data" [(ngModel)]="vendas.data" placeholder="Ex: 08-03-2009"/>                
+          <input pInputText type="datetime" name="data" [(ngModel)]="vendas.data" placeholder="Ex: 08-03-2009" required/>                
         </div>
       </div>      
   
@@ -22,7 +22,7 @@
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="pi pi-dollar" aria-hidden="true"></i></span>
           <input pInputText name="valor" [(ngModel)]="vendas.valor" placeholder="Valor" 
-          currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }">     
+          currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }" required>     
           <span class="ui-inputgroup-addon">,00</span>     
         </div>
       </div>
