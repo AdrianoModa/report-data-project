@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Venda } from './../shared/entity/venda';
 import { VendaService } from './../shared/service/venda.service';
 import { LojaService } from '../shared/service/loja.service';
@@ -12,6 +12,8 @@ import { Dropdown } from 'primeng/dropdown';
 })
 export class TableListReportComponent implements OnInit {
 
+  @ViewChild('dd')
+  dd: Dropdown
   vendas: Array<any>[] //Venda[] = []
   lojas: Array<any> //Loja[] = []  
   venda: any //Venda
@@ -107,12 +109,13 @@ export class TableListReportComponent implements OnInit {
       console.log(data)
   }
 
-  clearFilter(evento){
-    evento.resetFilter()
-    console.log(evento)
+  clearFilter(){
+    this.dd.selectItem(this.dd, 0)
+    this.listarVendas()
   }
 
-  limparFiltros(){
+  resetTable(dropdown: Dropdown){
+    dropdown.updateSelectedOption('')
     this.listarVendas()
   }
 
