@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Loja } from '../entity/loja';
+import { Observable } from 'rxjs';
 
-@Injectable()
-export class VendaService {
-
-    constructor(private http: HttpClient){}
+@Injectable({
+    providedIn: 'root'
+  })
+export class LojaService {    
 
     urlLoja = 'http://localhost:8080/loja'
+
+    constructor(private http: HttpClient){}
 
     getLojas(): Observable<any> {
         return this.http.get<any>(`${this.urlLoja}`)

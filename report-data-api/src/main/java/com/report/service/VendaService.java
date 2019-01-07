@@ -20,6 +20,10 @@ public class VendaService {
 	public List<Venda> listarTodos(){
 		return vendaRepository.findAll();
 	}
+	
+	public List<Venda> listarLojasPorNome(String nome){
+		return vendaRepository.findByNome(nome);
+	}
 
 	public List<Venda> listarPorData(LocalDate data){
 		return vendaRepository.findByData(data);

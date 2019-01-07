@@ -1,9 +1,29 @@
 <div class="ui-g-12">
   <div class="ui-g-12">
-    <p-panel header="Filtro por Datas">
-      <p-dropdown [options]="meses" [(ngModel)]="mouth" 
-      (onChange)="listarVendasPorMes(mouth.value)" placeholder="Selecione um Mês" optionLabel="nome" [showClear]="true">
-      </p-dropdown>      
+    <p-panel header="Filtro para Listagem da Tabela">
+
+      <div class="ui-g">
+        <div class="ui-g-2">
+          <p-dropdown [options]="meses" [(ngModel)]="venda" filter="true"
+          (onChange)="listarVendasPorMes(venda.valor)" placeholder="Selecione um Mês" optionLabel="nome" [showClear]="true">
+          </p-dropdown>
+        </div>
+            
+        <div class="ui-g-2">
+          <p-dropdown [options]="lojas" [(ngModel)]="venda" filter="true"
+          (onChange)="listarVendaPorLoja(venda.nome)" placeholder="Selecione um Loja" optionLabel="nome" [showClear]="true">
+          </p-dropdown>
+        </div>
+            
+        <div class="ui-g-2">
+          <p-dropdown [options]="vendas" [(ngModel)]="venda" filter="true"
+          (onChange)="listarVendasPorData(venda.data)" placeholder="Selecione uma Data" optionLabel="data" [showClear]="true">
+          </p-dropdown>      
+        </div>
+      </div>
+      <p-footer>
+        <p-button type="button" label="Limpar Filtros" (click)="limparFiltros()"></p-button>
+      </p-footer>
     </p-panel>
   </div>
 
@@ -14,16 +34,16 @@
       </ng-template>
   
       <ng-template pTemplate="header" style="text-align: center">
-          <tr>
-            <th>Loja</th>
-            <th>Data</th>
-            <th>Valor</th>
-          </tr>
+        <tr>
+          <th>Loja</th>
+          <th>Data</th>
+          <th>Valor</th>
+        </tr>
       </ng-template>
       <ng-template pTemplate="body" let-venda>
         <tr style="text-align: center">
           <td>{{ venda.nomeLoja}}</td>
-          <td>{{ venda.data }}</td>
+          <td>{{ venda.data }}</td> 
           <td>R$ {{ venda.valor | number: '2.1-2' }}</td>
         </tr>
       </ng-template>

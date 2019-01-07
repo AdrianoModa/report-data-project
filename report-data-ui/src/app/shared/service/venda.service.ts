@@ -20,6 +20,10 @@ export class VendaService {
     return this.http.get<any>(`${this.urlVenda}/mes/${mes}`)
   }
 
+  getVendaPorLoja(nome: any): Observable<any> {
+    return this.http.get<any>(`${this.urlVenda}/loja/${nome}`)
+  }
+  
   getVendasData(data: any): Observable<any> {
     return this.http.get<any>(`${this.urlVenda}/data/${data}`)
   }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Venda } from './../shared/entity/venda';
 import { VendaService } from './../shared/service/venda.service';
-import { validateConfig } from '@angular/router/src/config';
+import { LojaService } from '../shared/service/loja.service';
+import { Loja } from '../shared/entity/loja';
+import { Dropdown } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-table-list-report',
@@ -10,85 +12,108 @@ import { validateConfig } from '@angular/router/src/config';
 })
 export class TableListReportComponent implements OnInit {
 
-  mesInput: string[]
-  vendas: Venda[] = []
-  valorData: number
-  mouth: Venda
+  vendas: Array<any>[] //Venda[] = []
+  lojas: Array<any> //Loja[] = []  
+  venda: any //Venda
+  loja: any //Loja
   meses = 
   [
     {
       nome: 'Janeiro',
-      value: '01'
+      valor: '01'
     },
     {
       nome: 'Fevereiro',
-      value: '02'
+      valor: '02'
     },
     {
       nome: 'Março',
-      value: '03'
+      valor: '03'
     },
     {    
       nome: 'Abril',
-      value: '04'
+      valor: '04'
     },
     {
       nome: 'Maio',
-      value: '05'
+      valor: '05'
     },
     {
       nome: 'Junho',
-      value: '06'
+      valor: '06'
     },
     {
       nome: 'Julho',
-      value: '07'
+      valor: '07'
     },
     {
       nome: 'Agosto',
-      value: '08'
+      valor: '08'
     },
     {    
       nome: 'Setembro',
-      value: '09'
+      valor: '09'
     },
     {
       nome: 'Outubro',
-      value: '10'
+      valor: '10'
     
     },
     {
       nome: 'Novembro',
-      value: '11'
+      valor: '11'
     },
     {    
       nome: 'Dezembro',
-      value: '12'
+      valor: '12'
     }
   ]
 
-  constructor(private vendaService: VendaService) { }
+  constructor(
+    private vendaService: VendaService,
+    private lojaService: LojaService
+    ) { }
 
   ngOnInit() {
     this.listarVendas()
+    this.listarLojas()
   }
 
   listarVendas(){
-    this.vendaService.getVendas()
+    return this.vendaService.getVendas()
       .subscribe(venda => this.vendas = venda)
+  }
+
+  listarLojas(){
+    return this.lojaService.getLojas()
+      .subscribe(loja => this.lojas = loja)
+  }
+
+  listarVendaPorLoja(nome: string){
+    this.vendaService.getVendaPorLoja(nome)
+      .subscribe(venda => this.vendas = venda)
+      console.log(nome)
   }
 
   listarVendasPorMes(mes: number){
     this.vendaService.getVendasPorMes(mes)
       .subscribe(venda => this.vendas = venda)
+      console.log(mes)
   }
 
-  listaMesAnterior(mes: number){
-    this.vendaService.getVendasPorMes(mes)
-      .subscribe(() => {
-        let mesPassado = this.vendas.map(res => res.data)
-        this.mesInput = mesPassado
-      })
+  listarVendasPorData(data: any){
+    this.vendaService.getVendasData(data)
+      .subscribe(venda => this.vendas = venda)
+      console.log(data)
+  }
+
+  clearFilter(evento){
+    evento.resetFilter()
+    console.log(evento)
+  }
+
+  limparFiltros(){
+    this.listarVendas()
   }
 
 }

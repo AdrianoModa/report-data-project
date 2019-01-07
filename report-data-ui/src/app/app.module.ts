@@ -20,6 +20,7 @@ import {PanelModule} from 'primeng/panel';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { VendaService } from './shared/service/venda.service';
+import { LojaService } from './shared/service/loja.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormTableListComponent } from './table-list-report/form-table-list/form-table-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -48,7 +49,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     PanelModule,
     CurrencyMaskModule
   ],
-  providers: [VendaService],
+  providers: [VendaService, LojaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

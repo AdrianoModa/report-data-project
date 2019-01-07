@@ -1,3 +1,5 @@
+import { Loja } from './loja';
+
 export class Venda {
 
     id: number
@@ -7,5 +9,6 @@ export class Venda {
     dia: number
     mes: number
     ano: number
+    lojas: Loja = new Loja()
 
 }

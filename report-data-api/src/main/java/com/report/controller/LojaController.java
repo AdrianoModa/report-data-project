@@ -37,9 +37,9 @@ public class LojaController {
 	public ResponseEntity<?> buscarPorId(@PathVariable Long id){
 		Loja loja = lojaService.listarPorId(id);
 		return ResponseEntity.ok(loja);
-	}
+	}	
 	
-	@GetMapping("/{nome}")
+	@GetMapping("/qnt/{nome}")
 	public List<Long> numeroDeLojas(@PathVariable String nome) {		
 		return lojaService.quantidadeDeLojas(nome);
 	}

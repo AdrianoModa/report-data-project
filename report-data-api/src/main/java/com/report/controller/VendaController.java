@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -35,8 +36,14 @@ public class VendaController {
 		return ResponseEntity.ok().body(venda);
 	}
 	
+	@GetMapping("/loja/{nome}")
+	public ResponseEntity<?> buscarPorLoja(@PathVariable String nome){
+		List<Venda> venda = vendaService.listarLojasPorNome(nome);
+		return ResponseEntity.ok(venda);
+	}
+	
 	@GetMapping("/data/{data}")
-	public ResponseEntity<?> listarPorData(@PathVariable LocalDate data){
+	public ResponseEntity<?> listarPorData(@PathVariable @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate data){
 		List<Venda> venda = vendaService.listarPorData(data);
 		return ResponseEntity.ok().body(venda);
 	}

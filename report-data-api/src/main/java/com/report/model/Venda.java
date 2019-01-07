@@ -2,14 +2,20 @@ package com.report.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.report.config.CustomLocalDateTimeSerializer;
 
 @Entity
 @Table
@@ -21,7 +27,7 @@ public class Venda implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nomeLoja;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@JsonSerialize(using = CustomLocalDateTimeSerializer.class)
 	private LocalDate data;
 	private Double valor;
 	private Double valorAnterior;
@@ -29,11 +35,16 @@ public class Venda implements Serializable {
 	private int mes;
 	private int ano;
 	
+	@OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties(value = "venda")
+	private List<Loja> lojas = new ArrayList<>();
+	
 	public Venda() {
 		super();
 	}
 
-	public Venda(Long id, String nomeLoja, LocalDate data, Double valor, Double valorAnterior, int dia, int mes, int ano) {
+	public Venda(Long id, String nomeLoja, LocalDate data, Double valor, Double valorAnterior, int dia, int mes,
+			int ano, List<Loja> lojas) {
 		super();
 		this.id = id;
 		this.nomeLoja = nomeLoja;
@@ -43,6 +54,7 @@ public class Venda implements Serializable {
 		this.dia = dia;
 		this.mes = mes;
 		this.ano = ano;
+		this.lojas = lojas;
 	}
 
 	public Long getId() {
@@ -109,6 +121,14 @@ public class Venda implements Serializable {
 		this.ano = ano;
 	}
 
+	public List<Loja> getLojas() {
+		return lojas;
+	}
+
+	public void setLojas(List<Loja> lojas) {
+		this.lojas = lojas;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -137,6 +157,6 @@ public class Venda implements Serializable {
 	@Override
 	public String toString() {
 		return "Venda [id=" + id + ", nomeLoja=" + nomeLoja + ", data=" + data + ", valor=" + valor + ", valorAnterior="
-				+ valorAnterior + ", dia=" + dia + ", mes=" + mes + ", ano=" + ano + "]";
+				+ valorAnterior + ", dia=" + dia + ", mes=" + mes + ", ano=" + ano + ", lojas=" + lojas + "]";
 	}
 }

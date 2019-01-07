@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,14 +21,18 @@ public class Loja implements Serializable {
 	private Long id;
 	private String nome;
 	
+	@ManyToOne
+	private Venda venda;
+	
 	public Loja() {
 		super();
 	}
 
-	public Loja(Long id, String nome) {
+	public Loja(Long id, String nome, Venda venda) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.venda = venda;
 	}
 
 	public Long getId() {
@@ -43,6 +49,14 @@ public class Loja implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Venda getVenda() {
+		return venda;
+	}
+
+	public void setVenda(Venda venda) {
+		this.venda = venda;
 	}
 
 	@Override
@@ -72,6 +86,6 @@ public class Loja implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Loja [id=" + id + ", nome=" + nome + "]";
+		return "Loja [id=" + id + ", nome=" + nome + ", venda=" + venda + "]";
 	}
 }
