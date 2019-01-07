@@ -6,8 +6,14 @@
     padding: 5px;
     margin: 8px;
     border-radius: 2px solid white;
-    background-image: linear-gradient(to left,#2bc0ec,#1b81d7);
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
+    background-image: linear-gradient(to right,#afbef1,#1b81d7);
+    box-shadow: 0 2px 5px 0 rgba(20, 20, 20, 0.3);
+}
+
+.navbar-title {
+    position: relative;
+    float: right;
+    right: 38%;
 }
 
 .logo img {

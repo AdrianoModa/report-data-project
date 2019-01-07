@@ -16,6 +16,7 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import {DropdownModule} from 'primeng/dropdown';
 import {CalendarModule} from 'primeng/calendar';
 import {PanelModule} from 'primeng/panel';
+import {ContextMenuModule} from 'primeng/contextmenu';
 
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
@@ -47,7 +48,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     DropdownModule,
     CalendarModule,
     PanelModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    ContextMenuModule
   ],
   providers: [VendaService, LojaService],
   bootstrap: [AppComponent]
