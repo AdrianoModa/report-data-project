@@ -3,19 +3,19 @@
     <p-panel header="Filtro para Listagem da Tabela" [toggleable]="true" [transitionOptions]="'0ms'">
 
       <div class="ui-g">
-        <div class="ui-g-2">
+        <div class="ui-g-2 ui-sm-12 ui-fluid">
           <p-dropdown #dd [options]="meses" [(ngModel)]="venda" filter="true"
           (onChange)="listarVendasPorMes(venda.valor)" placeholder="Selecione um Mês" optionLabel="nome" [showClear]="true">
           </p-dropdown>
         </div>
             
-        <div class="ui-g-2">
+        <div class="ui-g-2 ui-sm-12 ui-fluid">
           <p-dropdown #dd [options]="lojas" [(ngModel)]="venda" filter="true"
           (onChange)="listarVendaPorLoja(venda.nome)" placeholder="Selecione um Loja" optionLabel="nome" [showClear]="true">
           </p-dropdown>
         </div>
             
-        <div class="ui-g-2">
+        <div class="ui-g-2 ui-sm-12 ui-fluid">
           <p-dropdown #dd [options]="vendas" [(ngModel)]="venda" filter="true"
           (onChange)="listarVendasPorData(venda.data)" placeholder="Selecione uma Data" optionLabel="data" [showClear]="true">
           </p-dropdown>            
