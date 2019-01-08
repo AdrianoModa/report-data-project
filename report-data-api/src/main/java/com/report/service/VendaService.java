@@ -41,6 +41,10 @@ public class VendaService {
 		return vendaRepository.findByYear(ano);
 	}
 	
+	public List<Venda> listarDataInicialEDataFinal(LocalDate dataInicio, LocalDate dataFinal){		
+		return vendaRepository.findByDataStartAndDateEnd(dataInicio, dataFinal);
+	}
+	
 	public Venda adicionar(Venda venda) {
 		venda.setDia(venda.getData().getDayOfMonth());
 		venda.setMes(venda.getData().getMonthValue());

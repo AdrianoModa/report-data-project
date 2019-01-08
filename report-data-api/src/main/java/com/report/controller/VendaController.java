@@ -66,6 +66,16 @@ public class VendaController {
 		return ResponseEntity.ok().body(venda);
 	}
 	
+	@GetMapping("/datas/{dataInicio}/{dataFinal}")
+	public ResponseEntity<?> listarDataPorIntervalo(
+			@PathVariable 
+			@DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dataInicio, 
+			@PathVariable
+			@DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dataFinal){
+		List<Venda> venda = vendaService.listarDataInicialEDataFinal(dataInicio, dataFinal);
+		return ResponseEntity.ok().body(venda);
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
 		Venda venda = vendaService.listarPorId(id);
