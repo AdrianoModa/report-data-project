@@ -14,6 +14,7 @@ export class FormTableListComponent implements OnInit {
   vendas: Venda[] = []
   filteredCountriesSingle: any[]
   @Output() vendaSalva = new EventEmitter()
+  @Output() calculoNovo = new EventEmitter()
   lojas: Array<any> = [ 'PTOMAD', 'MATRIZ']
     
     // { nome: "JULIOLIM"},{ nome: "OLPAIVA"},{ nome: "OSOPAIVA"},{ nome: "VVELHA,"},{ nome: "VTAVORA"},
@@ -56,6 +57,7 @@ export class FormTableListComponent implements OnInit {
         this.vendas = venda
         form.reset()
         this.vendaSalva.emit(venda)
+        this.calculoNovo.emit(venda)
       })
   }
 

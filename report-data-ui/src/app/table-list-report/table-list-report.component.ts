@@ -14,10 +14,11 @@ export class TableListReportComponent implements OnInit {
 
   @ViewChild('dd')
   dd: Dropdown
-  vendas: Array<any>[] //Venda[] = []
-  lojas: Array<any> //Loja[] = []  
-  venda: any //Venda
-  loja: any //Loja
+  vendas: Venda[] = []
+  lojas: Loja[] = []  
+  venda: Venda
+  loja: Loja
+  valorTotal: any;
   meses = 
   [
     {
@@ -79,6 +80,7 @@ export class TableListReportComponent implements OnInit {
   ngOnInit() {
     this.listarVendas()
     this.listarLojas()
+    this.calculoTotal()
   }
 
   listarVendas(){
@@ -94,19 +96,16 @@ export class TableListReportComponent implements OnInit {
   listarVendaPorLoja(nome: string){
     this.vendaService.getVendaPorLoja(nome)
       .subscribe(venda => this.vendas = venda)
-      console.log(nome)
   }
 
   listarVendasPorMes(mes: number){
     this.vendaService.getVendasPorMes(mes)
       .subscribe(venda => this.vendas = venda)
-      console.log(mes)
   }
 
   listarVendasPorData(data: any){
     this.vendaService.getVendasData(data)
       .subscribe(venda => this.vendas = venda)
-      console.log(data)
   }
 
   clearFilter(){
@@ -117,6 +116,17 @@ export class TableListReportComponent implements OnInit {
   resetTable(dropdown: Dropdown){
     dropdown.updateSelectedOption('')
     this.listarVendas()
+  }
+
+  calculoTotal(){
+    return this.vendaService.getVendas()
+    .toPromise()
+    .then(() => {
+      this.valorTotal = 0
+      this.vendas.forEach(v => {
+        this.valorTotal += v.valor
+      })
+    })
   }
 
 }

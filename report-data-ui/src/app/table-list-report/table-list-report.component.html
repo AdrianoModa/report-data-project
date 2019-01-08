@@ -42,14 +42,14 @@
       </ng-template>
       <ng-template pTemplate="body" let-venda>
         <tr style="text-align: center">
-          <td>{{ venda.nomeLoja}}</td>
+          <td>{{ venda.nomeLoja }}</td>
           <td>{{ venda.data }}</td> 
           <td>R$ {{ venda.valor | number: '2.1-2' }}</td>
         </tr>
       </ng-template>
-      <!-- <ng-template pTemplate="summary" style="text-align: right">
-          Total {{vendas.valor}} Venda
-      </ng-template> -->
+      <ng-template pTemplate="summary" style="text-align: left">
+          Total em Vendas R$ {{ valorTotal | number: '2.1-2' }}
+      </ng-template>
     </p-table>
   </div>
 </div>

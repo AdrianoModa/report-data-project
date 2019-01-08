@@ -6,6 +6,7 @@ export class Venda {
     nomeLoja: string
     data: string
     valor: number
+    valorAnterior: number
     dia: number
     mes: number
     ano: number

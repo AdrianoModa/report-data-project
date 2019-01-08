@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<!-- <app-form-table-list (vendaSalva)="listagem.listarVendas()"></app-form-table-list> -->
+<app-form-table-list (vendaSalva)="listagem.listarVendas()" (calculoNovo)="listagem.calculoTotal()"></app-form-table-list>
 <app-table-list-report #listagem></app-table-list-report>
 
 <router-outlet></router-outlet>
