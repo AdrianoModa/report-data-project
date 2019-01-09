@@ -19,7 +19,24 @@
           <p-dropdown #dd class="ui-dropdown-clearable" [options]="vendas" [(ngModel)]="venda" filter="true"
           (onChange)="listarVendasPorData(venda.data)" placeholder="Selecione uma Data" optionLabel="data" [showClear]="true">
           </p-dropdown>            
-        </div>        
+        </div>
+        
+        <div class="ui-g-2 ui-sm-12 ui-fluid">
+          <p-dropdown #dd class="ui-dropdown-clearable" [options]="vendas" filter="true"
+          (onChange)="dataInicio($event.value.data)" placeholder="Data Inicial" optionLabel="data" [showClear]="true">
+          </p-dropdown>
+        </div>
+        <br>
+        <div class="ui-g-2 ui-sm-12 ui-fluid">
+          <p-dropdown #dd class="ui-dropdown-clearable" [options]="vendas" filter="true"
+          (onChange)="dataFinal($event.value.data)" placeholder="Data Final" optionLabel="data" [showClear]="true">
+          </p-dropdown>
+        </div>
+
+        <div class="ui-g-2 ui-sm-12 ui-fluid">
+          <p-button #dd type="button" label="Filtrar" (click)="filtrarDatas()"></p-button>
+        </div>
+
       </div>
       <p-footer>
         <p-button #dd type="button" label="Limpar Filtros" (click)="clearFilter()"></p-button>

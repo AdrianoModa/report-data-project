@@ -28,6 +28,10 @@ export class VendaService {
     return this.http.get<any>(`${this.urlVenda}/data/${data}`)
   }
 
+  getVendasIntervaloDatas(startDate: any, endDate: any){
+    return this.http.get<any>(`${this.urlVenda}/datas/${startDate}/${endDate}`)
+  }
+
   postVenda(venda: Venda): Observable<any> {
     return this.http.post(`${this.urlVenda}`, venda)
   }

@@ -19,6 +19,8 @@ export class TableListReportComponent implements OnInit {
   venda: Venda
   loja: Loja
   valorTotal: any;
+  dataComeco: any
+  dataFim: any
   meses = 
   [
     {
@@ -93,29 +95,28 @@ export class TableListReportComponent implements OnInit {
       .subscribe(loja => this.lojas = loja)
   }
 
-  listarVendaPorLoja(nome: string){
-    this.vendaService.getVendaPorLoja(nome)
-      .subscribe(venda => this.vendas = venda)
-  }
-
   listarVendasPorMes(mes: number){
     this.vendaService.getVendasPorMes(mes)
       .subscribe(venda => this.vendas = venda)
+      this.calculoTotal()
+  }
+
+  listarVendaPorLoja(nome: string){
+    this.vendaService.getVendaPorLoja(nome)
+      .subscribe(venda => this.vendas = venda)
+      this.calculoTotal()
   }
 
   listarVendasPorData(data: any){
     this.vendaService.getVendasData(data)
       .subscribe(venda => this.vendas = venda)
+      this.calculoTotal()
   }
 
   clearFilter(){
     this.dd.selectItem(this.dd, 0)
     this.listarVendas()
-  }
-
-  resetTable(dropdown: Dropdown){
-    dropdown.updateSelectedOption('')
-    this.listarVendas()
+    this.calculoTotal()
   }
 
   calculoTotal(){
@@ -129,4 +130,20 @@ export class TableListReportComponent implements OnInit {
     })
   }
 
+  dataInicio(evento){
+    this.dataComeco = evento
+  }
+
+  dataFinal(evento){
+    this.dataFim = evento
+  }
+
+  filtrarDatas(){
+    this.vendaService.getVendasIntervaloDatas(this.dataComeco, this.dataFim)
+      .subscribe(venda => {
+        this.vendas = venda
+        this.calculoTotal()
+      })
+      
+  }
 }
