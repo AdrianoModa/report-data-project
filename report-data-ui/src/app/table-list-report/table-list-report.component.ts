@@ -4,6 +4,7 @@ import { VendaService } from './../shared/service/venda.service';
 import { LojaService } from '../shared/service/loja.service';
 import { Loja } from '../shared/entity/loja';
 import { Dropdown } from 'primeng/dropdown';
+// import { CurrencyPipe } from '@angular/common'
 
 @Component({
   selector: 'app-table-list-report',
@@ -21,6 +22,7 @@ export class TableListReportComponent implements OnInit {
   valorTotal: any;
   dataComeco: any
   dataFim: any
+  cols: any[]
   meses = 
   [
     {
@@ -76,13 +78,19 @@ export class TableListReportComponent implements OnInit {
 
   constructor(
     private vendaService: VendaService,
-    private lojaService: LojaService
+    private lojaService: LojaService,
+    // private currencyPipe: CurrencyPipe
     ) { }
 
   ngOnInit() {
     this.listarVendas()
     this.listarLojas()
     this.calculoTotal()
+    this.cols = [
+      { field: 'nomeLoja', header: 'Loja'},
+      { field: 'data', header: 'Data'},
+      { field: 'valor', header: 'Valor', type: "venda.valor | number: '2.1-2'" }
+    ]
   }
 
   listarVendas(){

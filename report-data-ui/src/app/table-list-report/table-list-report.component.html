@@ -26,7 +26,7 @@
           (onChange)="dataInicio($event.value.data)" placeholder="Data Inicial" optionLabel="data" [showClear]="true">
           </p-dropdown>
         </div>
-        <br>
+        
         <div class="ui-g-2 ui-sm-12 ui-fluid">
           <p-dropdown #dd class="ui-dropdown-clearable" [options]="vendas" filter="true"
           (onChange)="dataFinal($event.value.data)" placeholder="Data Final" optionLabel="data" [showClear]="true">
@@ -34,34 +34,37 @@
         </div>
 
         <div class="ui-g-2 ui-sm-12 ui-fluid">
-          <p-button #dd type="button" label="Filtrar" (click)="filtrarDatas()"></p-button>
+          <p-button #dd type="button" icon="pi pi-filter" iconPos="left" label="Filtrar" (click)="filtrarDatas()"></p-button>
         </div>
 
       </div>
       <p-footer>
-        <p-button #dd type="button" label="Limpar Filtros" (click)="clearFilter()"></p-button>
+        <p-button #dd type="button" icon="pi pi-trash" iconPos="left" label="Limpar Filtros" (click)="clearFilter()"></p-button>
       </p-footer>      
     </p-panel>
   </div>
 
   <div class="ui-g-12">
-    <p-table [value]="vendas">
+    <p-table #dt [columns]="cols" [value]="vendas" selectionMode="multiple">
       <ng-template pTemplate="caption">
-        Listagem de vendas
+        <div class="ui-helper-clearfix">
+          <button type="button" pButton icon="pi pi-check" iconPos="left" label="All Data" (click)="dt.exportCSV()" style="float:left"></button>
+          <button type="button" pButton icon="pi pi-file" iconPos="left" label="Selection Only" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+        </div>
       </ng-template>
-  
-      <ng-template pTemplate="header" style="text-align: center">
+      
+      <ng-template pTemplate="header" let-colums style="text-align: center">
         <tr>
-          <th>Loja</th>
-          <th>Data</th>
-          <th>Valor</th>
+          <th *ngFor="let col of cols">
+            {{ col.header }}
+          </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-venda>
         <tr style="text-align: center">
-          <td>{{ venda.nomeLoja }}</td>
-          <td>{{ venda.data }}</td> 
-          <td>R$ {{ venda.valor | number: '2.1-2' }}</td>
+          <td *ngFor="let col of cols">
+            {{ col.type ? ['R$ '] + [venda.valor | number: '2.1-2'] : venda[col.field] }}
+          </td>
         </tr>
       </ng-template>
       <ng-template pTemplate="summary" style="text-align: left">
